@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio sistema saas</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+</head>
+<body>
+
+    <div class="box">
+        <p id="nomeAleatorio"></p>
+    </div>
+    
+    <script>
+        function geraCodnome() {
+            const alfabeto = ["🥕 cenoura", 
+            "🥑 abacate", 
+            "🥬 repolho", 
+            "🍅 tomate", 
+            "🥒 pepino", 
+            "🫛 ervilha", 
+            "🍍 abacaxi", 
+            "🍉 melancia",
+            "🍇 uva"];
+            let codnome = '';
+    
+            for (let i = 0; i < 1; i++) {
+                const caractereIndex = Math.floor(Math.random() * alfabeto.length);
+                codnome += alfabeto[caractereIndex];
+            }
+    
+            return codnome;
+        }
+    
+        function gerarNome() {
+            const nomeAleatorio = geraCodnome();
+            document.getElementById('nomeAleatorio').textContent = nomeAleatorio;
+        }
+    </script>
+    
+    <button id="gerarNomeBtn" onclick="gerarNome()">GERAR CODNOME</button>
+    </body>
+</html>
