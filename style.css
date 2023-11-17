@@ -1,34 +1,53 @@
 body {
     text-align: center;
-    margin: 50px;
+    margin: 5%;
 }
 
 button {
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: 2vw;
+    padding: 1.5vw 3vw;
     cursor: pointer;
     background-color: red;
     border-color: red;
-    border-radius: 10px;
+    border-radius: 2vw;
     font-weight: 600;
 }
 
 p {
-    font-size: 75px;
-    margin-top: 50px;
+    font-size: 5vw;
+    margin-top: 5%;
 }
 
-#gerarNomeBtn{
-    width: 500px;
-    margin-top: 300px;
+#gerarNomeBtn {
+    width: 70%;
+    margin-top: 20%;
 }
-.box{
-    margin-left: 475px;
+
+.box {
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px;
-    height: 300px;
-    background-color:    rgba(52, 50, 50, 0.30);
-    border-radius: 30px;
+    width: 70%;
+    height: 40vh;
+    background-color: rgba(52, 50, 50, 0.30);
+    border-radius: 3vw;
+}
+
+@media screen and (max-width: 768px) {
+    button {
+        font-size: 4vw;
+        padding: 3vw 6vw;
+        border-radius: 4vw;
+    }
+
+    p {
+        font-size: 8vw;
+        margin-top: 10%;
+    }
+
+    #gerarNomeBtn, .box {
+        width: 90%;
+        margin-top: 10%;
+    }
 }
