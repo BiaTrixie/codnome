@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,86 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
-</head>
-<body>
 
-    <div class="box">
-        <p id="nomeAleatorio"></p>
+<body>
+    <div class="tudo">
+        <div class="box">
+            <p id="nomeAleatorio"></p>
+            <div id="botoes">
+                <button type="button" onclick="escolherCodnome()">Escolher Codnome</button>
+                <button type="button" onclick="gerarOutroCodnome()">Gerar Outro Codnome</button>
+            </div>
+        </div>
+
+        <form id="userInfoForm">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required>
+
+            <label for="ramal">Ramal:</label>
+            <input type="text" id="ramal" required>
+
+            <button type="button" id="gerarNomeBtn" onclick="gerarNome()">GERAR CODNOME</button>
+        </form>
     </div>
-    
+
     <script>
+        let codnomeEscolhido = '';
+
         function geraCodnome() {
-            const alfabeto = ["🥕 cenoura", 
-            "🥑 abacate", 
-            "🥬 repolho", 
-            "🍅 tomate", 
-            "🥒 pepino", 
-            "🫛 ervilha", 
-            "🍍 abacaxi", 
-            "🍉 melancia",
-            "🍇 uva"];
+            const alfabeto = ["🥕 cenoura",
+                "🥑 abacate",
+                "🥬 repolho",
+                "🍅 tomate",
+                "🥒 pepino",
+                "🫛 ervilha",
+                "🍍 abacaxi",
+                "🍉 melancia",
+                "🍇 uva"
+            ];
             let codnome = '';
-    
+
             for (let i = 0; i < 1; i++) {
                 const caractereIndex = Math.floor(Math.random() * alfabeto.length);
                 codnome += alfabeto[caractereIndex];
             }
-    
+
             return codnome;
         }
-    
+
         function gerarNome() {
-            const nomeAleatorio = geraCodnome();
-            document.getElementById('nomeAleatorio').textContent = nomeAleatorio;
+            const nome = document.getElementById('nome').value;
+            const ramal = document.getElementById('ramal').value;
+            const userInfoForm = document.getElementById('userInfoForm');
+
+            if (nome && ramal) {
+                const nomeAleatorio = geraCodnome();
+                document.getElementById('nomeAleatorio').textContent = `${nome} - ${ramal} - ${nomeAleatorio}`;
+                codnomeEscolhido = `${nome} - ${ramal} - ${nomeAleatorio}`;
+                userInfoForm.classList.add('hidden');
+                document.getElementById('botoes').style.display = 'block';
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
         }
+
+        function escolherCodnome() {
+            alert(`Você escolheu o codnome: ${codnomeEscolhido}`);
+            // Aqui você pode adicionar a lógica para atrelar o codnome ao usuário, por exemplo, enviar para o servidor, etc.
+        }
+
+        function gerarOutroCodnome() {
+            document.getElementById('nomeAleatorio').textContent = '';
+            document.getElementById('nome').value = '';
+            document.getElementById('ramal').value = '';
+            document.getElementById('userInfoForm').classList.remove('hidden');
+            document.getElementById('botoes').style.display = 'none';
+        }
+
+        // Adicionado para exibir o formulário inicialmente
+        window.onload = function () {
+            document.getElementById('userInfoForm').classList.remove('hidden');
+        };
     </script>
-    
-    <button id="gerarNomeBtn" onclick="gerarNome()">GERAR CODNOME</button>
-    </body>
+</body>
+
 </html>
